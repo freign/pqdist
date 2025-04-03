@@ -25,7 +25,7 @@ class PQDist {
     float* centroids;
     //一条数据encode的大小
     int encode_size;
-    virtual void calc_dist(uint8_t* encodes, int size, float* dists) = 0;
+    virtual void calc_dist(uint8_t* encodes, int data_num, int batch_size, float* dists) = 0;
     virtual void load_query(float* query) = 0;
 
 };
@@ -33,7 +33,7 @@ class PQDistNaive : public PQDist{
     public:
     PQDistNaive(int d_, int m_, int nbits_);
     float* pq_dist_cache_data;
-    void calc_dist(uint8_t* encodes, int size, float* dists) override;
+    void calc_dist(uint8_t* encodes, int data_num, int batch_size, float* dists) override;
     void load_query(float* query) override;
     ~PQDistNaive() override;
     
@@ -42,7 +42,7 @@ class PQDistSIMD : public PQDist{
     public:
     PQDistSIMD(int d_, int m_, int nbits_);
     float* pq_dist_cache_data;
-    void calc_dist(uint8_t* encodes, int size, float* dists) override;
+    void calc_dist(uint8_t* encodes, int data_num, int batch_size, float* dists) override;
     void load_query(float* query) override;
     ~PQDistSIMD() override;
 };
@@ -53,13 +53,13 @@ class PQDistSIMDQuantize : public PQDist{
     PQDistSIMDQuantize(int d_, int m_, int nbits_);
     float* pq_dist_cache_data;
     uint8_t* pq_dist_cache_data_uint8;
-    void calc_dist(uint8_t* encodes, int size, float* dists) override;
+    void calc_dist(uint8_t* encodes, int data_num, int batch_size, float* dists) override;
     void load_query(float* query) override;
     ~PQDistSIMDQuantize() override;
     float minx;
     float maxx;
     float scale;
-    __m512i* simd_registers;
+
 };
 #endif
 
@@ -84,7 +84,7 @@ class  Tester {
     float* realDistances;
     float* PQDistances;
     void test();
-    void calc_real_dist(float* query, float* data, int size, float* dists);
+    void calc_real_dist(float* query, float* data, float* dists);
     void transpose_encodes_bybatch(int batch_size);
 };
 void read_dataset(string filename, float* datas, int num_limit);
