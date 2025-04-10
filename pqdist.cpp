@@ -326,7 +326,7 @@ void PQDistSIMDQuantize::calc_dist(uint8_t *encodes, int data_num, int batch_siz
 {
     assert(nbits == 4);
     // print_m512i_uint8i(simd_registers[i / 8 + 1]);
-    __m512i simd_registers[m / 8];
+    __m512i simd_registers[m / 4];
     uint8_t *temp_buffers = (uint8_t *)aligned_alloc(64, sizeof(uint8_t) * 4 * (1 << nbits));
     for (int i = 0; i < m; i += 8)
     {
@@ -335,13 +335,13 @@ void PQDistSIMDQuantize::calc_dist(uint8_t *encodes, int data_num, int batch_siz
         memcpy(temp_buffers + code_nums, pq_dist_cache_data_uint8 + (i + 2) * code_nums, sizeof(uint8_t) * code_nums);
         memcpy(temp_buffers + 2 * code_nums, pq_dist_cache_data_uint8 + (i + 4) * code_nums, sizeof(uint8_t) * code_nums);
         memcpy(temp_buffers + 3 * code_nums, pq_dist_cache_data_uint8 + (i + 6) * code_nums, sizeof(uint8_t) * code_nums);
-        simd_registers[i / 8] = _mm512_load_si512(temp_buffers);
+        simd_registers[2 * (i / 8)] = _mm512_load_si512(temp_buffers);
         // print_m512i_uint8(simd_registers[i / 8]);
         memcpy(temp_buffers, pq_dist_cache_data_uint8 + (i + 1) * code_nums, sizeof(uint8_t) * code_nums);
         memcpy(temp_buffers + code_nums, pq_dist_cache_data_uint8 + (i + 3) * code_nums, sizeof(uint8_t) * code_nums);
         memcpy(temp_buffers + 2 * code_nums, pq_dist_cache_data_uint8 + (i + 5) * code_nums, sizeof(uint8_t) * code_nums);
         memcpy(temp_buffers + 3 * code_nums, pq_dist_cache_data_uint8 + (i + 7) * code_nums, sizeof(uint8_t) * code_nums);
-        simd_registers[i / 8 + 1] = _mm512_load_si512(temp_buffers);
+        simd_registers[2 * (i / 8) + 1] = _mm512_load_si512(temp_buffers);
     }
     free(temp_buffers);
     __m512i mask = _mm512_set1_epi8(0x0F);
@@ -367,7 +367,7 @@ void PQDistSIMDQuantize::calc_dist(uint8_t *encodes, int data_num, int batch_siz
             __m512i partial_id = _mm512_and_si512(index, mask);
             // print_m512i_uint8(partial_id);
 
-            __m512i dist = _mm512_shuffle_epi8(simd_registers[i / 8], partial_id);
+            __m512i dist = _mm512_shuffle_epi8(simd_registers[2 * (i / 8)], partial_id);
             // print_m512i_uint8(dist);
             extract_and_upcast_and_add(acc, dist);
             // 饱和加法
@@ -376,7 +376,7 @@ void PQDistSIMDQuantize::calc_dist(uint8_t *encodes, int data_num, int batch_siz
             index = _mm512_srli_epi16(index, 4);
             partial_id = _mm512_and_si512(index, mask);
             // print_m512i_uint8(partial_id);
-            dist = _mm512_shuffle_epi8(simd_registers[i / 8 + 1], partial_id);
+            dist = _mm512_shuffle_epi8(simd_registers[2 * (i / 8) + 1], partial_id);
             // print_m512i_uint8(dist);
             extract_and_upcast_and_add(acc, dist);
         }
@@ -540,7 +540,7 @@ int main(int argc, char *argv[])
                         {
                             Tester *tester = new Tester(960, m, nbits, pqdist_type, size, 1000, 16);
                             // uint8_t* encodes = (uint8_t*)malloc(sizeof(uint8_t) * 16);
-                            string pq_file_name = "/root/pqdist/gist_encoded_data_1000000_" + to_string(m) + "_" + to_string(nbits);
+                            string pq_file_name = "/root/pqdist_2/gist_encoded_data_1000000_" + to_string(m) + "_" + to_string(nbits);
                             tester->load_PQ(pq_file_name);
                             tester->load_query("/root/gist/test.fvecs");
                             tester->load_data("/root/gist/train.fvecs");
@@ -553,7 +553,7 @@ int main(int argc, char *argv[])
                 {
                     cout << "******Testing with PQDist_TYPE_SIMD_QUANTIZE *****\n";
                     Tester *tester = new Tester(960, 120, 4, pqdist_type, size, 1000, 16);
-                    string pq_file_name = "/root/pqdist/gist_encoded_data_1000000_120_4";
+                    string pq_file_name = "/root/pqdist_2/gist_encoded_data_1000000_120_4";
                     tester->load_PQ(pq_file_name);
                     tester->load_query("/root/gist/test.fvecs");
                     tester->load_data("/root/gist/train.fvecs");
@@ -584,7 +584,7 @@ int main(int argc, char *argv[])
                         {
                             Tester *tester = new Tester(128, m, nbits, pqdist_type, size, 1000, 16);
                             // uint8_t* encodes = (uint8_t*)malloc(sizeof(uint8_t) * 16);
-                            string pq_file_name = "/root/pqdist/sift_encoded_data_1000000_" + to_string(m) + "_" + to_string(nbits);
+                            string pq_file_name = "/root/pqdist_2/sift_encoded_data_1000000_" + to_string(m) + "_" + to_string(nbits);
                             tester->load_PQ(pq_file_name);
                             tester->load_query("/root/sift/test.fvecs");
                             tester->load_data("/root/sift/train.fvecs");
@@ -601,7 +601,7 @@ int main(int argc, char *argv[])
                         int nbits = 4;
                         Tester *tester = new Tester(128, m, nbits, pqdist_type, size, 1000, 16);
                         // uint8_t* encodes = (uint8_t*)malloc(sizeof(uint8_t) * 16);
-                        string pq_file_name = "/root/pqdist/sift_encoded_data_1000000_" + to_string(m) + "_" + to_string(nbits);
+                        string pq_file_name = "/root/pqdist_2/sift_encoded_data_1000000_" + to_string(m) + "_" + to_string(nbits);
                         tester->load_PQ(pq_file_name);
                         tester->load_query("/root/sift/test.fvecs");
                         tester->load_data("/root/sift/train.fvecs");

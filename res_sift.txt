@@ -1,0 +1,456 @@
+**************Testing with size = 512 **************
+
+*******Testing with PQDist_TYPE_NAIVE *******
+load: 1000000 128 16 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 191 ms
+计算 PQ 近似距离时间: 34 ms
+平均均方误差：927.764
+平均偏离：0.0487619
+
+load: 1000000 128 16 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 186 ms
+计算 PQ 近似距离时间: 277 ms
+平均均方误差：176.932
+平均偏离：0.0207952
+
+load: 1000000 128 32 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 181 ms
+计算 PQ 近似距离时间: 52 ms
+平均均方误差：412.207
+平均偏离：0.0316294
+
+load: 1000000 128 32 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 189 ms
+计算 PQ 近似距离时间: 317 ms
+平均均方误差：62.5756
+平均偏离：0.0123431
+
+load: 1000000 128 64 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 183 ms
+计算 PQ 近似距离时间: 84 ms
+平均均方误差：137.394
+平均偏离：0.0181397
+
+load: 1000000 128 64 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 182 ms
+计算 PQ 近似距离时间: 394 ms
+平均均方误差：6.83586
+平均偏离：0.00416292
+
+*******Testing with PQDist_TYPE_SIMD_QUANTIZE *******
+load: 1000000 128 16 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 163 ms
+计算 PQ 近似距离时间: 17 ms
+平均均方误差：1207.12
+平均偏离：0.0574649
+
+load: 1000000 128 32 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 164 ms
+计算 PQ 近似距离时间: 25 ms
+平均均方误差：424.953
+平均偏离：0.032185
+
+load: 1000000 128 64 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 164 ms
+计算 PQ 近似距离时间: 40 ms
+平均均方误差：137.97
+平均偏离：0.0181701
+
+**************Testing with size = 1024 **************
+
+*******Testing with PQDist_TYPE_NAIVE *******
+load: 1000000 128 16 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 327 ms
+计算 PQ 近似距离时间: 51 ms
+平均均方误差：951.505
+平均偏离：0.0496207
+
+load: 1000000 128 16 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 327 ms
+计算 PQ 近似距离时间: 295 ms
+平均均方误差：184.79
+平均偏离：0.0213009
+
+load: 1000000 128 32 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 325 ms
+计算 PQ 近似距离时间: 84 ms
+平均均方误差：406.26
+平均偏离：0.0315753
+
+load: 1000000 128 32 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 330 ms
+计算 PQ 近似距离时间: 349 ms
+平均均方误差：62.8699
+平均偏离：0.0124513
+
+load: 1000000 128 64 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 326 ms
+计算 PQ 近似距离时间: 152 ms
+平均均方误差：127.7
+平均偏离：0.0174692
+
+load: 1000000 128 64 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 323 ms
+计算 PQ 近似距离时间: 465 ms
+平均均方误差：7.40724
+平均偏离：0.00432512
+
+*******Testing with PQDist_TYPE_SIMD_QUANTIZE *******
+load: 1000000 128 16 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 327 ms
+计算 PQ 近似距离时间: 20 ms
+平均均方误差：1235.56
+平均偏离：0.0583006
+
+load: 1000000 128 32 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 327 ms
+计算 PQ 近似距离时间: 31 ms
+平均均方误差：418.809
+平均偏离：0.0321214
+
+load: 1000000 128 64 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 322 ms
+计算 PQ 近似距离时间: 51 ms
+平均均方误差：128.151
+平均偏离：0.0174924
+
+**************Testing with size = 2048 **************
+
+*******Testing with PQDist_TYPE_NAIVE *******
+load: 1000000 128 16 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 652 ms
+计算 PQ 近似距离时间: 86 ms
+平均均方误差：956.672
+平均偏离：0.0493306
+
+load: 1000000 128 16 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 649 ms
+计算 PQ 近似距离时间: 332 ms
+平均均方误差：188.085
+平均偏离：0.0213966
+
+load: 1000000 128 32 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 668 ms
+计算 PQ 近似距离时间: 152 ms
+平均均方误差：401.856
+平均偏离：0.0313043
+
+load: 1000000 128 32 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 652 ms
+计算 PQ 近似距离时间: 431 ms
+平均均方误差：64.9816
+平均偏离：0.0125993
+
+load: 1000000 128 64 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 653 ms
+计算 PQ 近似距离时间: 286 ms
+平均均方误差：129.178
+平均偏离：0.0174953
+
+load: 1000000 128 64 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 652 ms
+计算 PQ 近似距离时间: 601 ms
+平均均方误差：7.81868
+平均偏离：0.00439556
+
+*******Testing with PQDist_TYPE_SIMD_QUANTIZE *******
+load: 1000000 128 16 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 653 ms
+计算 PQ 近似距离时间: 28 ms
+平均均方误差：1237.2
+平均偏离：0.057828
+
+load: 1000000 128 32 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 655 ms
+计算 PQ 近似距离时间: 43 ms
+平均均方误差：413.841
+平均偏离：0.0318147
+
+load: 1000000 128 64 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 650 ms
+计算 PQ 近似距离时间: 73 ms
+平均均方误差：129.602
+平均偏离：0.0175146
+
+**************Testing with size = 4096 **************
+
+*******Testing with PQDist_TYPE_NAIVE *******
+load: 1000000 128 16 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 1300 ms
+计算 PQ 近似距离时间: 158 ms
+平均均方误差：957.595
+平均偏离：0.0491206
+
+load: 1000000 128 16 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 1289 ms
+计算 PQ 近似距离时间: 404 ms
+平均均方误差：188.802
+平均偏离：0.0213322
+
+load: 1000000 128 32 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 1310 ms
+计算 PQ 近似距离时间: 286 ms
+平均均方误差：392.898
+平均偏离：0.0307472
+
+load: 1000000 128 32 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 1315 ms
+计算 PQ 近似距离时间: 560 ms
+平均均方误差：65.8878
+平均偏离：0.0126794
+
+load: 1000000 128 64 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 1296 ms
+计算 PQ 近似距离时间: 541 ms
+平均均方误差：130.657
+平均偏离：0.017529
+
+load: 1000000 128 64 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 1302 ms
+计算 PQ 近似距离时间: 886 ms
+平均均方误差：8.42986
+平均偏离：0.004509
+
+*******Testing with PQDist_TYPE_SIMD_QUANTIZE *******
+load: 1000000 128 16 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 1292 ms
+计算 PQ 近似距离时间: 41 ms
+平均均方误差：1232.4
+平均偏离：0.0573291
+
+load: 1000000 128 32 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 1291 ms
+计算 PQ 近似距离时间: 66 ms
+平均均方误差：403.966
+平均偏离：0.0312115
+
+load: 1000000 128 64 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 1311 ms
+计算 PQ 近似距离时间: 116 ms
+平均均方误差：131.01
+平均偏离：0.017544
+
+**************Testing with size = 8192 **************
+
+*******Testing with PQDist_TYPE_NAIVE *******
+load: 1000000 128 16 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 2596 ms
+计算 PQ 近似距离时间: 305 ms
+平均均方误差：1526.54
+平均偏离：0.0615099
+
+load: 1000000 128 16 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 2591 ms
+计算 PQ 近似距离时间: 561 ms
+平均均方误差：277.422
+平均偏离：0.025363
+
+load: 1000000 128 32 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 2593 ms
+计算 PQ 近似距离时间: 567 ms
+平均均方误差：618.858
+平均偏离：0.0379718
+
+load: 1000000 128 32 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 2602 ms
+计算 PQ 近似距离时间: 838 ms
+平均均方误差：86.6749
+平均偏离：0.0140939
+
+load: 1000000 128 64 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 2586 ms
+计算 PQ 近似距离时间: 1071 ms
+平均均方误差：209.432
+平均偏离：0.0212728
+
+load: 1000000 128 64 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 2592 ms
+计算 PQ 近似距离时间: 1455 ms
+平均均方误差：10.4344
+平均偏离：0.00477922
+
+*******Testing with PQDist_TYPE_SIMD_QUANTIZE *******
+load: 1000000 128 16 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 2591 ms
+计算 PQ 近似距离时间: 68 ms
+平均均方误差：1889.87
+平均偏离：0.0703835
+
+load: 1000000 128 32 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 2595 ms
+计算 PQ 近似距离时间: 111 ms
+平均均方误差：636.134
+平均偏离：0.0385862
+
+load: 1000000 128 64 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 2585 ms
+计算 PQ 近似距离时间: 207 ms
+平均均方误差：210.542
+平均偏离：0.0213278
+
+**************Testing with size = 16384 **************
+
+*******Testing with PQDist_TYPE_NAIVE *******
+load: 1000000 128 16 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 5198 ms
+计算 PQ 近似距离时间: 577 ms
+平均均方误差：1367.68
+平均偏离：0.0578747
+
+load: 1000000 128 16 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 5173 ms
+计算 PQ 近似距离时间: 857 ms
+平均均方误差：257.095
+平均偏离：0.0242967
+
+load: 1000000 128 32 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 5358 ms
+计算 PQ 近似距离时间: 1196 ms
+平均均方误差：554.946
+平均偏离：0.0359262
+
+load: 1000000 128 32 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 5703 ms
+计算 PQ 近似距离时间: 1527 ms
+平均均方误差：80.5862
+平均偏离：0.0135796
+
+load: 1000000 128 64 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 5700 ms
+计算 PQ 近似距离时间: 2231 ms
+平均均方误差：185.752
+平均偏离：0.0201509
+
+load: 1000000 128 64 8
+Load Query is done
+Load Data is done
+计算真实距离时间: 5202 ms
+计算 PQ 近似距离时间: 2580 ms
+平均均方误差：9.9938
+平均偏离：0.00470454
+
+*******Testing with PQDist_TYPE_SIMD_QUANTIZE *******
+load: 1000000 128 16 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 5200 ms
+计算 PQ 近似距离时间: 125 ms
+平均均方误差：1705.99
+平均偏离：0.066564
+
+load: 1000000 128 32 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 5193 ms
+计算 PQ 近似距离时间: 205 ms
+平均均方误差：570.597
+平均偏离：0.036506
+
+load: 1000000 128 64 4
+Load Query is done
+Load Data is done
+计算真实距离时间: 5186 ms
+计算 PQ 近似距离时间: 375 ms
+平均均方误差：186.662
+平均偏离：0.0201962
+
